@@ -1,0 +1,35 @@
+#pragma once
+
+#include "Components.hpp"
+#include "/home/guilherme/Documentos/Projetos-Pessoais/Pico-8/roguelike/2D_GameEngine/src/Vector2D.hpp"
+
+class TransformComponent : public Component
+{
+public:
+
+    Vector2D position;
+    Vector2D velocity;
+
+    int speed = 2;
+
+    TransformComponent()
+    {
+        position.x = 0.0f;
+        position.y = 0.0f;
+    }
+    TransformComponent(float x, float y)
+    {
+        position.x = x;
+        position.y = y;
+    }
+    void init() override
+    {
+        velocity.x = 0;
+        velocity.y = 0;
+    }
+    void update() override
+    {
+        position.x += velocity.x * speed;
+        position.y += velocity.y * speed;
+    }
+};
